@@ -23,6 +23,10 @@ $topseries-v2-primary-palette: (
   700: #3d00e0,
   800: #1c00db,
   900: #0000d6,
+  A100: #fff,
+  A200: white,
+  A400: white,
+  A700: black,
   contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
@@ -33,15 +37,19 @@ $topseries-v2-primary-palette: (
     600: white,
     700: white,
     800: white,
-    900: white
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white
   )
 );
 
-$topseries-v2-primary: mat.define-palette($topseries-v2-primary-palette);
+$topseries-v2-primary: mat.define-palette($topseries-v2-primary-palette, 500, 100, 900);
 $topseries-v2-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$topseries-v2-warn: mat.define-palette(mat.$red-palette);
+$topseries-v2-warn: mat.define-palette(mat.$red-palette, 500);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -53,6 +61,18 @@ $topseries-v2-theme: mat.define-light-theme((
   )
 ));
 
+$topseries-v2-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $topseries-v2-primary,
+      accent: $topseries-v2-accent,
+      warn: $topseries-v2-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -62,3 +82,7 @@ $topseries-v2-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-colors($topseries-v2-dark-theme);
+}

@@ -1,0 +1,50 @@
+@use "@angular/material" as mat;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100%;
+
+    .title-section {
+        // text-align: center;
+        padding: 25px 0;
+
+        span {
+            color: grey;
+        }
+    }
+
+    .social-button {
+        width: 100%;
+    }
+
+    .separator {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        padding: 25px 0;
+        color: grey;
+
+        span {
+            padding: 0 15px;
+        }
+
+        .bar {
+            height: 1px;
+            background-color: grey;
+            width: 100%;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 15px;
+    }
+}
